@@ -3,354 +3,1007 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politique de Confidentialité - Bizibox</title>
+    <meta name="description" content="Politique de confidentialité de Bizibox - Application de gestion de caisse et stock">
+    <title>Politique de Confidentialité | Bizibox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #8A2BE2;
+            --primary-dark: #6A1B9A;
+            --secondary: #FF8F00;
+            --secondary-light: #FFA726;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a68;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #8A2BE2 0%, #FF8F00 100%);
-            min-height: 100vh;
-            padding: 20px;
+
+        html {
+            scroll-behavior: smooth;
         }
-        
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: var(--bg-white);
+            min-height: 100vh;
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 40px;
+            position: relative;
             overflow: hidden;
         }
-        
-        .header {
-            background: linear-gradient(135deg, #8A2BE2 0%, #6A1B9A 100%);
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 143, 0, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .header .meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 0.9rem;
+            opacity: 0.85;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header .meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+        }
+
+        .nav a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Content */
+        .content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: 100px;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 6px;
+            height: 30px;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--secondary-light) 100%);
+            border-radius: 3px;
+        }
+
+        .section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .section h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .section ul, .section ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        .section li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .section li::marker {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .card.highlight {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border-left-color: var(--secondary);
+        }
+
+        .card.warning {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-left-color: var(--error);
+        }
+
+        .card.success {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left-color: var(--success);
+        }
+
+        .card h4 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+
+        /* Contact Box */
+        .contact-box {
+            background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 2px solid var(--primary);
+        }
+
+        .contact-box h4 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 12px 0;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .contact-item .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-white);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: var(--bg-light);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .badge-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .badge-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .badge-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .badge-warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
             color: white;
             padding: 40px;
             text-align: center;
         }
-        
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
         }
-        
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-        
-        .content {
-            padding: 40px;
-        }
-        
-        .section {
-            margin-bottom: 30px;
-        }
-        
-        .section h2 {
-            color: #8A2BE2;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #FF8F00;
-        }
-        
-        .section h3 {
-            color: #6A1B9A;
-            font-size: 1.2em;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-        
-        .section p, .section ul {
-            margin-bottom: 15px;
-            color: #555;
-        }
-        
-        .section ul {
-            padding-left: 25px;
-        }
-        
-        .section li {
-            margin-bottom: 8px;
-        }
-        
-        .highlight {
-            background: #FFF3E0;
-            padding: 15px;
-            border-left: 4px solid #FF8F00;
-            border-radius: 4px;
-            margin: 15px 0;
-        }
-        
-        .warning {
-            background: #FFEBEE;
-            padding: 15px;
-            border-left: 4px solid #F44336;
-            border-radius: 4px;
-            margin: 15px 0;
-        }
-        
-        .footer {
-            background: #f5f5f5;
-            padding: 30px;
-            text-align: center;
-            color: #666;
-            border-top: 1px solid #e0e0e0;
-        }
-        
+
         .footer p {
             margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
         }
-        
-        .contact-box {
-            background: #E8EAF6;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
+
+        .footer .version {
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
-        
-        .contact-box p {
-            margin: 5px 0;
+
+        .footer .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
         }
-        
-        @media (max-width: 600px) {
+
+        /* Responsive */
+        @media (max-width: 768px) {
             .header {
-                padding: 30px 20px;
+                padding: 40px 25px;
             }
-            
+
             .header h1 {
-                font-size: 1.8em;
+                font-size: 2rem;
             }
-            
+
+            .header .subtitle {
+                font-size: 1rem;
+            }
+
+            .nav {
+                padding: 15px 25px;
+            }
+
             .content {
+                padding: 30px 25px;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .section h3 {
+                font-size: 1.2rem;
+            }
+
+            .contact-box {
                 padding: 20px;
             }
-            
-            .section h2 {
-                font-size: 1.3em;
+
+            .footer {
+                padding: 30px 25px;
             }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .header .meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .header {
+                background: var(--primary);
+                color: white;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeIn 0.5s ease-out;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Politique de Confidentialité</h1>
-            <p>Bizibox - Système de Gestion de Caisse et Stock</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">Dernière mise à jour : 24 septembre 2026</p>
-        </div>
-        
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Politique de Confidentialité</h1>
+                <p class="subtitle">Bizibox - Système de Gestion de Caisse et Stock</p>
+                <div class="meta">
+                    <span>📅 Dernière mise à jour : 24 septembre 2026</span>
+                    <span>📄 Version : 1.0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="#responsable">Responsable</a>
+            <a href="#donnees">Données collectées</a>
+            <a href="#finalites">Finalités</a>
+            <a href="#partage">Partage</a>
+            <a href="#conservation">Conservation</a>
+            <a href="#droits">Vos droits</a>
+            <a href="#securite">Sécurité</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <!-- Content -->
         <div class="content">
-            <div class="section">
+            <!-- Section 1: Responsable du traitement -->
+            <section id="responsable" class="section">
                 <h2>1. Responsable du traitement</h2>
-                <p>Le responsable du traitement des données collectées par Bizibox est l'entreprise qui configure et utilise l'application. Les informations de l'entreprise doivent être configurées dans l'écran "Informations légales" de l'application.</p>
+                <p>Le responsable du traitement des données collectées par Bizibox est l'entreprise qui configure et utilise l'application. En tant qu'utilisateur de Bizibox, vous êtes le responsable du traitement des données que vous saisissez dans l'application.</p>
                 
                 <div class="contact-box">
-                    <p><strong>Pour contacter le responsable du traitement :</strong></p>
-                    <p>📍 Adresse : [Configurez dans l'application]</p>
-                    <p>📞 Téléphone : [Configurez dans l'application]</p>
-                    <p>📧 Email : [Configurez dans l'application]</p>
+                    <h4>📋 Informations du responsable du traitement</h4>
+                    <p>Les informations de contact doivent être configurées dans l'écran "Informations légales" de l'application Bizibox :</p>
+                    <div class="contact-item">
+                        <div class="icon">🏢</div>
+                        <span><strong>Nom de l'entreprise :</strong> [Configurez dans l'application]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <span><strong>Adresse :</strong> [Configurez dans l'application]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📞</div>
+                        <span><strong>Téléphone :</strong> [Configurez dans l'application]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <span><strong>Email :</strong> [Configurez dans l'application]</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="section">
+
+                <div class="card warning">
+                    <h4>⚠️ Important</h4>
+                    <p>Avant toute utilisation commerciale de Bizibox, vous devez impérativement configurer vos informations légales dans l'application. Ces informations apparaîtront sur les reçus PDF générés et seront utilisées pour exercer les droits des personnes concernées.</p>
+                </div>
+            </section>
+
+            <!-- Section 2: Données collectées -->
+            <section id="donnees" class="section">
                 <h2>2. Données collectées</h2>
-                <p>Bizibox collecte et traite les données suivantes localement sur votre appareil :</p>
-                
+                <p>Bizibox collecte et traite les données suivantes localement sur votre appareil. Toutes les données sont stockées dans une base de données SQLite locale et ne sont pas transmises automatiquement à un serveur externe.</p>
+
                 <h3>2.1 Données de produits</h3>
-                <ul>
-                    <li>Nom du produit</li>
-                    <li>Catégorie</li>
-                    <li>Prix d'achat et de vente</li>
-                    <li>Quantité en stock</li>
-                    <li>Photo du produit (optionnelle)</li>
-                </ul>
-                
-                <h3>2.2 Données de ventes</h3>
-                <ul>
-                    <li>Date et heure de la vente</li>
-                    <li>Articles vendus (produit, quantité, prix unitaire, total)</li>
-                    <li>Montant total de la vente</li>
-                    <li>Montant reçu</li>
-                    <li>Méthode de paiement</li>
-                    <li>Client (nom et téléphone) - uniquement pour les ventes à crédit</li>
-                </ul>
-                
-                <h3>2.3 Données de clients</h3>
-                <ul>
-                    <li>Nom du client</li>
-                    <li>Numéro de téléphone (format E164)</li>
-                </ul>
-                <p><em>Ces données sont collectées uniquement lors de ventes à crédit, de créances ou de cotisations.</em></p>
-                
-                <h3>2.4 Données de caisse</h3>
-                <ul>
-                    <li>Sessions de caisse (date d'ouverture/fermeture, montants)</li>
-                    <li>Mouvements de stock</li>
-                </ul>
-                
-                <h3>2.5 Données de créances et cotisations</h3>
-                <ul>
-                    <li>Montant total</li>
-                    <li>Montant payé</li>
-                    <li>Date d'échéance</li>
-                    <li>Statut</li>
-                    <li>Historique des paiements</li>
-                </ul>
-                
-                <h3>2.6 Données de sauvegarde</h3>
-                <ul>
-                    <li>Sauvegardes de la base de données exportées par l'utilisateur</li>
-                </ul>
-            </div>
-            
-            <div class="section">
-                <h2>3. Finalités du traitement</h2>
-                <p>Les données collectées sont utilisées exclusivement pour :</p>
-                <ul>
-                    <li>Gérer le catalogue de produits et les stocks</li>
-                    <li>Enregistrer les ventes et générer des reçus PDF</li>
-                    <li>Suivre les mouvements de caisse</li>
-                    <li>Gérer les créances clients et les cotisations</li>
-                    <li>Générer des rapports de vente et de stock</li>
-                    <li>Restaurer des sauvegardes sur demande explicite de l'utilisateur</li>
-                    <li>Envoyer des rappels de paiement via WhatsApp (uniquement sur action de l'utilisateur)</li>
-                </ul>
-                
-                <div class="highlight">
-                    <p><strong>Bizibox n'utilise PAS ces données pour :</strong></p>
+                <div class="card">
+                    <p>Les informations suivantes sont collectées pour chaque produit :</p>
                     <ul>
-                        <li>De la publicité</li>
-                        <li>Du profilage ou du marketing</li>
-                        <li>De la collecte d'analyse en arrière-plan</li>
-                        <li>La vente à des tiers</li>
+                        <li><span class="badge badge-primary">Nom</span> du produit</li>
+                        <li><span class="badge badge-primary">Catégorie</span> de produit</li>
+                        <li><span class="badge badge-secondary">Prix d'achat</span> (en FCFA ou devise locale)</li>
+                        <li><span class="badge badge-secondary">Prix de vente</span> (en FCFA ou devise locale)</li>
+                        <li><span class="badge badge-warning">Quantité</span> en stock</li>
+                        <li><span class="badge badge-success">Photo</span> du produit (optionnelle, stockée localement)</li>
+                        <li><span class="badge badge-primary">Statut d'archivage</span> (actif/archivé)</li>
                     </ul>
                 </div>
-            </div>
-            
-            <div class="section">
+
+                <h3>2.2 Données de ventes</h3>
+                <div class="card">
+                    <p>Pour chaque vente enregistrée, les données suivantes sont collectées :</p>
+                    <ul>
+                        <li><span class="badge badge-primary">Date et heure</span> de la vente</li>
+                        <li><span class="badge badge-secondary">Articles vendus</span> (produit, quantité, prix unitaire, total ligne)</li>
+                        <li><span class="badge badge-secondary">Montant total</span> de la vente</li>
+                        <li><span class="badge badge-warning">Montant reçu</span> du client</li>
+                        <li><span class="badge badge-primary">Méthode de paiement</span> (espèces, carte, mobile money, etc.)</li>
+                        <li><span class="badge badge-success">Client</span> (nom et téléphone) - uniquement pour les ventes à crédit</li>
+                        <li><span class="badge badge-warning">Statut</span> de la vente (active/annulée)</li>
+                    </ul>
+                </div>
+
+                <h3>2.3 Données de clients</h3>
+                <div class="card highlight">
+                    <h4>👤 Données personnelles de clients</h4>
+                    <p>Ces données sont collectées <strong>uniquement</strong> lors de :</p>
+                    <ul>
+                        <li>Ventes à crédit</li>
+                        <li>Créances clients</li>
+                        <li>Cotisations/épargne</li>
+                        <li>Envoi de rappels de paiement</li>
+                    </ul>
+                    <p><strong>Données collectées :</strong></p>
+                    <ul>
+                        <li><span class="badge badge-primary">Nom complet</span> du client</li>
+                        <li><span class="badge badge-secondary">Numéro de téléphone</span> (format international E164)</li>
+                    </ul>
+                </div>
+
+                <h3>2.4 Données de caisse</h3>
+                <div class="card">
+                    <p>Pour la gestion des sessions de caisse :</p>
+                    <ul>
+                        <li><span class="badge badge-primary">Date et heure</span> d'ouverture de session</li>
+                        <li><span class="badge badge-secondary">Montant d'ouverture</span> de caisse</li>
+                        <li><span class="badge badge-warning">Date et heure</span> de fermeture de session</li>
+                        <li><span class="badge badge-secondary">Montant de fermeture</span> de caisse</li>
+                    </ul>
+                </div>
+
+                <h3>2.5 Données de créances et cotisations</h3>
+                <div class="card">
+                    <p>Pour le suivi des créances clients et cotisations :</p>
+                    <ul>
+                        <li><span class="badge badge-primary">Montant total</span> de la créance/cotisation</li>
+                        <li><span class="badge badge-warning">Montant payé</span></li>
+                        <li><span class="badge badge-secondary">Date d'échéance</span></li>
+                        <li><span class="badge badge-success">Statut</span> (ouvert, partiel, payé)</li>
+                        <li><span class="badge badge-primary">Historique</span> des paiements</li>
+                        <li><span class="badge badge-warning">Notes</span> et commentaires</li>
+                    </ul>
+                </div>
+
+                <h3>2.6 Données de sauvegarde</h3>
+                <div class="card">
+                    <p>Lorsque vous exportez une sauvegarde :</p>
+                    <ul>
+                        <li>Copie complète de la base de données SQLite</li>
+                        <li>Toutes les données mentionnées ci-dessus</li>
+                        <li>Fichier stocké localement ou partagé via votre choix</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 3: Finalités -->
+            <section id="finalites" class="section">
+                <h2>3. Finalités du traitement</h2>
+                <p>Les données collectées par Bizibox sont utilisées exclusivement pour les finalités suivantes, conformément au principe de minimisation des données :</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Finalité</th>
+                                <th>Données utilisées</th>
+                                <th>Base légale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gestion du catalogue produits</td>
+                                <td>Nom, catégorie, prix, quantité, photo</td>
+                                <td>Intérêt légitime</td>
+                            </tr>
+                            <tr>
+                                <td>Enregistrement des ventes</td>
+                                <td>Ventes, articles, montants, paiement</td>
+                                <td>Exécution de contrat</td>
+                            </tr>
+                            <tr>
+                                <td>Génération de reçus PDF</td>
+                                <td>Ventes, client, entreprise</td>
+                                <td>Exécution de contrat</td>
+                            </tr>
+                            <tr>
+                                <td>Suivi des stocks</td>
+                                <td>Quantités, mouvements de stock</td>
+                                <td>Intérêt légitime</td>
+                            </tr>
+                            <tr>
+                                <td>Gestion de caisse</td>
+                                <td>Sessions de caisse, montants</td>
+                                <td>Obligation légale</td>
+                            </tr>
+                            <tr>
+                                <td>Gestion des créances</td>
+                                <td>Client, montants, paiements</td>
+                                <td>Exécution de contrat</td>
+                            </tr>
+                            <tr>
+                                <td>Rappels WhatsApp</td>
+                                <li>Téléphone client, message</li>
+                                <td>Consentement</td>
+                            </tr>
+                            <tr>
+                                <td>Rapports et statistiques</td>
+                                <td>Ventes, stocks, caisse</td>
+                                <td>Intérêt légitime</td>
+                            </tr>
+                            <tr>
+                                <td>Sauvegarde et restauration</td>
+                                <td>Toutes les données</td>
+                                <td>Intérêt légitime</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card success">
+                    <h4>✅ Ce que Bizibox NE fait PAS</h4>
+                    <ul>
+                        <li>Pas de publicité ou de marketing ciblé</li>
+                        <li>Pas de profilage ou de suivi comportemental</li>
+                        <li>Pas de collecte d'analyse en arrière-plan</li>
+                        <li>Pas de vente de données à des tiers</li>
+                        <li>Pas de transfert automatique vers un serveur cloud</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 4: Partage des données -->
+            <section id="partage" class="section">
                 <h2>4. Partage des données</h2>
-                
-                <h3>4.1 Stockage local</h3>
-                <p>Les données sont stockées localement sur votre appareil dans une base de données SQLite. Elles ne sont PAS transmises automatiquement à un serveur tiers par Bizibox.</p>
-                
+
+                <h3>4.1 Stockage local uniquement</h3>
+                <div class="card">
+                    <p><strong>Principe fondamental :</strong> Toutes les données sont stockées localement sur votre appareil dans une base de données SQLite. Bizibox ne transmet PAS automatiquement vos données à un serveur externe.</p>
+                    <p>Vos données restent sous votre contrôle total sur votre appareil.</p>
+                </div>
+
                 <h3>4.2 Sauvegardes exportées</h3>
-                <p>Les sauvegardes de base de données exportées par l'utilisateur peuvent être partagées via l'application de partage de votre choix (email, cloud, etc.). Bizibox n'a aucun contrôle sur ces sauvegardes une fois exportées.</p>
-                
-                <h3>4.3 WhatsApp</h3>
-                <p>Les rappels de paiement via WhatsApp utilisent le service WhatsApp. Le traitement des données par WhatsApp est soumis à ses propres conditions de confidentialité. Bizibox transmet uniquement le numéro de téléphone et le message de rappel à WhatsApp sur action explicite de l'utilisateur.</p>
-                
+                <div class="card highlight">
+                    <h4>📤 Export de sauvegarde</h4>
+                    <p>Lorsque vous exportez une sauvegarde de la base de données :</p>
+                    <ul>
+                        <li>Le fichier est généré dans le stockage local de votre appareil</li>
+                        <li>Vous pouvez le partager via l'application de partage de votre choix (email, Google Drive, Dropbox, etc.)</li>
+                        <li>Bizibox n'a aucun contrôle sur ces sauvegardes une fois exportées</li>
+                        <li>Vous êtes responsable de la sécurisation des sauvegardes exportées</li>
+                    </ul>
+                </div>
+
+                <h3>4.3 WhatsApp (rappels de paiement)</h3>
+                <div class="card">
+                    <h4>💬 Intégration WhatsApp</h4>
+                    <p>Lorsque vous envoyez un rappel de paiement via WhatsApp :</p>
+                    <ul>
+                        <li>Bizibox ouvre l'application WhatsApp avec un message pré-rempli</li>
+                        <li>Seul le numéro de téléphone et le message sont transmis à WhatsApp</li>
+                        <li>Le traitement par WhatsApp est soumis à ses propres conditions de confidentialité</li>
+                        <li>Bizibox ne stocke pas les conversations WhatsApp</li>
+                    </ul>
+                    <p><strong>Base légale :</strong> Consentement explicite de l'utilisateur (action de clic sur le bouton d'envoi).</p>
+                </div>
+
                 <h3>4.4 Tiers</h3>
-                <p>Bizibox ne partage PAS vos données avec des tiers à des fins commerciales.</p>
-            </div>
-            
-            <div class="section">
+                <div class="card success">
+                    <h4>🔒 Aucun partage commercial</h4>
+                    <p>Bizibox ne partage PAS vos données avec des tiers à des fins commerciales. Vos données ne sont jamais vendues, louées ou partagées avec des annonceurs ou des partenaires marketing.</p>
+                </div>
+            </section>
+
+            <!-- Section 5: Conservation -->
+            <section id="conservation" class="section">
                 <h2>5. Conservation des données</h2>
+
+                <h3>5.1 Durée de conservation</h3>
                 <p>Les données sont conservées sur votre appareil jusqu'à :</p>
                 <ul>
-                    <li>Leur suppression par l'utilisateur</li>
+                    <li>Leur suppression par l'utilisateur (produit, vente, client individuel)</li>
                     <li>La désinstallation de l'application</li>
                     <li>La suppression des données de l'application via les paramètres de l'appareil</li>
                 </ul>
-                
-                <div class="warning">
-                    <p><strong>Note importante :</strong> Certaines données (historique des ventes, mouvements de caisse) peuvent devoir être conservées pour respecter les obligations comptables et fiscales applicables dans votre juridiction. L'utilisateur reste responsable de respecter ces obligations.</p>
+
+                <h3>5.2 Obligations légales de conservation</h3>
+                <div class="card warning">
+                    <h4>⚠️ Obligations comptables et fiscales</h4>
+                    <p>Certaines données peuvent devoir être conservées plus longtemps pour respecter les obligations légales applicables dans votre juridiction :</p>
+                    <ul>
+                        <li><strong>Historique des ventes :</strong> généralement 5 à 10 ans (obligations fiscales)</li>
+                        <li><strong>Mouvements de caisse :</strong> généralement 5 à 10 ans (obligations comptables)</li>
+                        <li><strong>Factures et reçus :</strong> généralement 5 à 10 ans (obligations fiscales)</li>
+                    </ul>
+                    <p><strong>Responsabilité :</strong> En tant qu'utilisateur de Bizibox, vous êtes responsable de respecter les obligations de conservation applicables à votre activité. L'application fournit des outils d'archivage pour vous aider.</p>
                 </div>
-            </div>
-            
-            <div class="section">
+
+                <h3>5.3 Archivage</h3>
+                <div class="card">
+                    <p>Bizibox dispose d'une fonction d'archivage pour les produits. Les produits archivés :</p>
+                    <ul>
+                        <li>Ne sont plus affichés dans le catalogue actif</li>
+                        <li>Sont conservés dans la base de données pour l'historique</li>
+                        <li>Peuvent être restaurés si nécessaire</li>
+                        <li>Sont inclus dans les sauvegardes exportées</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 6: Vos droits -->
+            <section id="droits" class="section">
                 <h2>6. Vos droits</h2>
-                <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et aux lois applicables sur la protection des données, vous disposez des droits suivants :</p>
-                
+                <p>Conformément au Règlement Général sur la Protection des Données (RGPD), à la Loi Informatique et Libertés (France), et aux lois applicables sur la protection des données dans votre juridiction, vous disposez des droits suivants :</p>
+
                 <h3>6.1 Droit d'accès</h3>
-                <p>Vous pouvez demander l'accès à vos données en consultant directement la base de données locale de l'application ou en exportant une sauvegarde.</p>
-                
+                <div class="card">
+                    <p><strong>Que vous permet ce droit :</strong> Demander l'accès à vos données personnelles.</p>
+                    <p><strong>Comment l'exercer avec Bizibox :</strong></p>
+                    <ul>
+                        <li>Consultez directement les données dans l'application (produits, ventes, clients)</li>
+                        <li>Exportez une sauvegarde de la base de données via le menu "Sauvegarder"</li>
+                        <li>Le fichier exporté contient toutes vos données dans un format lisible</li>
+                    </ul>
+                </div>
+
                 <h3>6.2 Droit de rectification</h3>
-                <p>Vous pouvez modifier les données des produits, clients et ventes directement dans l'application.</p>
-                
-                <h3>6.3 Droit à l'effacement</h3>
-                <p>Vous pouvez supprimer :</p>
-                <ul>
-                    <li>Des produits individuels</li>
-                    <li>Des ventes (avec annulation)</li>
-                    <li>Des clients</li>
-                    <li>L'intégralité des données en désinstallant l'application</li>
-                </ul>
-                <p><em>Limitation : Certaines données peuvent devoir être conservées pour des obligations légales (comptabilité, fiscalité). La suppression définitive peut être limitée si elle compromet l'historique comptable.</em></p>
-                
+                <div class="card">
+                    <p><strong>Que vous permet ce droit :</strong> Demander la correction de données inexactes ou incomplètes.</p>
+                    <p><strong>Comment l'exercer avec Bizibox :</strong></p>
+                    <ul>
+                        <li>Modifiez directement les données dans l'application (produits, clients)</li>
+                        <li>Les ventes peuvent être annulées et recréées si nécessaire</li>
+                    </ul>
+                </div>
+
+                <h3>6.3 Droit à l'effacement (droit à l'oubli)</h3>
+                <div class="card highlight">
+                    <p><strong>Que vous permet ce droit :</strong> Demander la suppression de vos données personnelles.</p>
+                    <p><strong>Comment l'exercer avec Bizibox :</strong></p>
+                    <ul>
+                        <li>Supprimez des produits individuels</li>
+                        <li>Annulez des ventes (avec conservation de l'historique d'annulation)</li>
+                        <li>Supprimez des clients</li>
+                        <li>Désinstallez l'application pour supprimer toutes les données</li>
+                    </ul>
+                    <p><strong>Limitations :</strong> Certaines données peuvent devoir être conservées pour des obligations légales (comptabilité, fiscalité). La suppression définitive peut être limitée si elle compromet l'historique comptable.</p>
+                </div>
+
                 <h3>6.4 Droit à la limitation du traitement</h3>
-                <p>L'application traite les données localement et ne transfère pas les données vers un serveur. Le traitement est limité aux finalités décrites à la section 3.</p>
-                
+                <div class="card">
+                    <p><strong>Que vous permet ce droit :</strong> Demander la limitation du traitement de vos données.</p>
+                    <p><strong>Comment l'exercer avec Bizibox :</strong></p>
+                    <ul>
+                        <li>Bizibox traite les données localement et ne les transfère pas vers un serveur</li>
+                        <li>Le traitement est déjà limité aux finalités décrites à la section 3</li>
+                        <li>Vous pouvez cesser d'utiliser l'application à tout moment</li>
+                    </ul>
+                </div>
+
                 <h3>6.5 Droit d'opposition</h3>
-                <p>Vous pouvez vous opposer au traitement en cessant d'utiliser l'application et en la désinstallant.</p>
-                
+                <div class="card">
+                    <p><strong>Que vous permet ce droit :</strong> Vous opposer au traitement de vos données.</p>
+                    <p><strong>Comment l'exercer avec Bizibox :</strong></p>
+                    <ul>
+                        <li>Cessez d'utiliser l'application</li>
+                        <li>Désinstallez l'application</li>
+                        <li>Supprimez les données de l'application via les paramètres de l'appareil</li>
+                    </ul>
+                </div>
+
                 <h3>6.6 Droit à la portabilité</h3>
-                <p>Vous pouvez exporter vos données à tout moment via la fonction "Sauvegarder" dans l'application. Le fichier exporté peut être importé sur un autre appareil utilisant Bizibox.</p>
-                
-                <h3>6.7 Exercice de vos droits</h3>
-                <p>Pour exercer ces droits, contactez le responsable du traitement configuré dans l'application.</p>
-            </div>
-            
-            <div class="section">
-                <h2>7. Sécurité</h2>
-                <p>Bizibox utilise des mesures de sécurité pour protéger vos données locales :</p>
-                <ul>
-                    <li>Les données sont stockées dans une base de données SQLite sur l'appareil</li>
-                    <li>L'application n'envoie pas les données vers un serveur externe</li>
-                    <li>Les sauvegardes sont exportées uniquement sur action explicite de l'utilisateur</li>
-                </ul>
-                
-                <h3>Responsabilités de l'utilisateur :</h3>
-                <ul>
-                    <li>Sécuriser votre appareil avec un code PIN, mot de passe ou empreinte digitale</li>
-                    <li>Protéger les sauvegardes exportées (chiffrement, stockage sécurisé)</li>
-                    <li>Supprimer les sauvegardes lorsqu'elles ne sont plus nécessaires</li>
-                    <li>Ne pas partager l'appareil avec des personnes non autorisées</li>
-                    <li>Sauvegarder régulièrement les données</li>
-                </ul>
-            </div>
-            
-            <div class="section">
+                <div class="card">
+                    <p><strong>Que vous permet ce droit :</strong> Recevoir vos données dans un format structuré et les transférer à un autre responsable de traitement.</p>
+                    <p><strong>Comment l'exercer avec Bizibox :</strong></p>
+                    <ul>
+                        <li>Exportez une sauvegarde via le menu "Sauvegarder"</li>
+                        <li>Le fichier exporté peut être importé sur un autre appareil utilisant Bizibox</li>
+                        <li>Le fichier peut être converti en d'autres formats (CSV, Excel) si nécessaire</li>
+                    </ul>
+                </div>
+
+                <h3>6.7 Droit de retirer le consentement</h3>
+                <div class="card">
+                    <p><strong>Que vous permet ce droit :</strong> Retirer votre consentement à tout moment.</p>
+                    <p><strong>Comment l'exercer avec Bizibox :</strong></p>
+                    <ul>
+                        <li>Allez dans l'écran "Informations légales"</li>
+                        <li>Cliquez sur "Retirer le consentement enregistré"</li>
+                        <li>Vous devrez accepter à nouveau les conditions pour continuer à utiliser l'application</li>
+                    </ul>
+                </div>
+
+                <h3>6.8 Exercice de vos droits</h3>
+                <div class="card success">
+                    <h4>📧 Comment contacter le responsable du traitement</h4>
+                    <p>Pour exercer vos droits, contactez le responsable du traitement configuré dans l'application :</p>
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <span>Adresse : [Configurez dans l'application > Informations légales]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📞</div>
+                        <span>Téléphone : [Configurez dans l'application > Informations légales]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <span>Email : [Configurez dans l'application > Informations légales]</span>
+                    </div>
+                    <p><strong>Délai de réponse :</strong> Le responsable du traitement s'engage à répondre dans un délai de 30 jours à compter de la réception de votre demande.</p>
+                </div>
+            </section>
+
+            <!-- Section 7: Sécurité -->
+            <section id="securite" class="section">
+                <h2>7. Sécurité des données</h2>
+
+                <h3>7.1 Mesures de sécurité mises en place</h3>
+                <div class="card">
+                    <p>Bizibox implémente les mesures de sécurité suivantes pour protéger vos données locales :</p>
+                    <ul>
+                        <li><span class="badge badge-primary">Stockage local</span> : Données stockées dans une base de données SQLite sur l'appareil</li>
+                        <li><span class="badge badge-secondary">Pas de cloud</span> : Aucun transfert automatique vers un serveur externe</li>
+                        <li><span class="badge badge-success">Export contrôlé</span> : Sauvegardes exportées uniquement sur action explicite de l'utilisateur</li>
+                        <li><span class="badge badge-warning">Permissions minimales</span> : L'application ne demande que les permissions nécessaires (caméra, galerie, fichiers)</li>
+                    </ul>
+                </div>
+
+                <h3>7.2 Responsabilités de l'utilisateur</h3>
+                <div class="card warning">
+                    <h4>⚠️ Mesures de sécurité à votre charge</h4>
+                    <p>En tant qu'utilisateur, vous êtes responsable de :</p>
+                    <ul>
+                        <li><strong>Sécuriser votre appareil</strong> avec un code PIN, mot de passe, empreinte digitale ou reconnaissance faciale</li>
+                        <li><strong>Protéger les sauvegardes exportées</strong> (chiffrement, stockage sécurisé, ne pas les partager publiquement)</li>
+                        <li><strong>Supprimer les sauvegardes</strong> lorsqu'elles ne sont plus nécessaires</li>
+                        <li><strong>Ne pas partager l'appareil</strong> avec des personnes non autorisées</li>
+                        <li><strong>Sauvegarder régulièrement</strong> les données pour éviter toute perte</li>
+                        <li><strong>Respecter les obligations légales</strong> de conservation des données comptables et fiscales</li>
+                    </ul>
+                </div>
+
+                <h3>7.3 Limitations de sécurité</h3>
+                <div class="card highlight">
+                    <h4>⚠️ Informations importantes</h4>
+                    <ul>
+                        <li>La base de données SQLite n'est pas chiffrée par défaut. En cas de vol ou de root de l'appareil, les données pourraient être accessibles.</li>
+                        <li>Les sauvegardes exportées ne sont pas chiffrées. Protégez-les comme des documents sensibles.</li>
+                        <li>Bizibox ne peut pas être tenu responsable de pertes de données dues à une mauvaise utilisation ou à un défaut de sécurisation de l'appareil.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 8: Modifications -->
+            <section class="section">
                 <h2>8. Modifications de cette politique</h2>
-                <p>Cette politique de confidentialité peut être modifiée. Les modifications seront notifiées dans l'écran "Informations légales" de l'application avec la date de mise à jour.</p>
-            </div>
-            
-            <div class="section">
-                <h2>9. Enfants</h2>
-                <p>Bizibox n'est pas destiné aux enfants de moins de 13 ans. Nous ne collectons pas sciemment de données personnelles d'enfants. Si vous êtes parent ou tuteur et que vous savez que votre enfant nous a fourni des données personnelles, veuillez nous contacter.</p>
-            </div>
-            
-            <div class="section">
+                <div class="card">
+                    <p>Cette politique de confidentialité peut être modifiée à tout moment pour refléter des changements dans nos pratiques ou pour se conformer aux évolutions légales et réglementaires.</p>
+                    <ul>
+                        <li>Les modifications seront notifiées dans l'écran "Informations légales" de l'application</li>
+                        <li>La date de mise à jour sera indiquée en haut de cette page</li>
+                        <li>En cas de modifications substantielles, un avis sera affiché dans l'application</li>
+                        <li>La version actuelle est la version 1.0 (24 septembre 2026)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 9: Enfants -->
+            <section class="section">
+                <h2>9. Protection des mineurs</h2>
+                <div class="card warning">
+                    <p>Bizibox n'est pas destiné aux enfants de moins de 13 ans. Nous ne collectons pas sciemment de données personnelles d'enfants.</p>
+                    <p>Si vous êtes parent ou tuteur et que vous savez que votre enfant nous a fourni des données personnelles, veuillez nous contacter immédiatement afin que nous puissions supprimer ces informations.</p>
+                </div>
+            </section>
+
+            <!-- Section 10: Juridiction -->
+            <section class="section">
                 <h2>10. Juridiction applicable</h2>
-                <p>Cette politique est régie par les lois de la juridiction dans laquelle l'entreprise utilisatrice est établie. En cas de litige, les tribunaux de cette juridiction seront compétents.</p>
-            </div>
-            
-            <div class="section">
+                <div class="card">
+                    <p>Cette politique de confidentialité est régie par les lois de la juridiction dans laquelle l'entreprise utilisatrice est établie.</p>
+                    <ul>
+                        <li>En cas de litige, les tribunaux de cette juridiction seront compétents</li>
+                        <li>Les droits des utilisateurs sont protégés conformément au RGPD pour les résidents de l'Union Européenne</li>
+                        <li>Pour les utilisateurs hors UE, les lois locales sur la protection des données s'appliquent</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 11: Contact -->
+            <section id="contact" class="section">
                 <h2>11. Contact</h2>
-                <p>Pour toute question concernant cette politique de confidentialité ou pour exercer vos droits, contactez le responsable du traitement :</p>
-                
+                <p>Pour toute question concernant cette politique de confidentialité, pour exercer vos droits, ou pour signaler une violation de données, contactez le responsable du traitement :</p>
+
                 <div class="contact-box">
-                    <p>📍 Adresse : [Configurez dans l'application > Informations légales]</p>
-                    <p>📞 Téléphone : [Configurez dans l'application > Informations légales]</p>
-                    <p>📧 Email : [Configurez dans l'application > Informations légales]</p>
+                    <h4>📞 Coordonnées du responsable du traitement</h4>
+                    <p>Les informations ci-dessous doivent être configurées dans l'écran "Informations légales" de l'application Bizibox :</p>
+                    <div class="contact-item">
+                        <div class="icon">🏢</div>
+                        <span><strong>Nom de l'entreprise :</strong> [Configurez dans l'application]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <span><strong>Adresse :</strong> [Configurez dans l'application]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📞</div>
+                        <span><strong>Téléphone :</strong> [Configurez dans l'application]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <span><strong>Email :</strong> [Configurez dans l'application]</span>
+                    </div>
+                </div>
+
+                <div class="card success">
+                    <h4>📧 Contact pour les questions techniques</h4>
+                    <p>Pour les questions techniques relatives à l'application Bizibox (bugs, fonctionnalités, assistance), vous pouvez contacter le support technique de l'application via les canaux officiels de distribution (Google Play Store, Apple App Store).</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p><strong>Politique de Confidentialité - Bizibox</strong></p>
+                <p class="version">Version 1.0 • 24 septembre 2026</p>
+                <p>Document conforme au RGPD et aux politiques Google Play Store</p>
+                <div class="copyright">
+                    <p>© 2026 Bizibox. Tous droits réservés.</p>
+                    <p>Bizibox est une application de gestion de caisse et de stock.</p>
                 </div>
             </div>
-        </div>
-        
-        <div class="footer">
-            <p><strong>Version : 1.0</strong></p>
-            <p><strong>Date de publication : 24 septembre 2026</strong></p>
-            <p style="margin-top: 20px;">© 2026 Bizibox. Tous droits réservés.</p>
-        </div>
+        </footer>
     </div>
 </body>
 </html>
